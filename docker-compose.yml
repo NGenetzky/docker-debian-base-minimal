@@ -20,3 +20,9 @@ services:
         tmpfs:
           size: 100M
       - /sys/fs/cgroup:/sys/fs/cgroup:ro
+
+    environment:
+      DEBBASE_NO_STARTUP_APT: ""
+      DEBBASE_SSH: "disabled"
+      DEBBASE_SYSLOG: "stdout" # "internal"
+      # DEBBASE_TIMEZONE: "America/Chicago"
