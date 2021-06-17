@@ -1,0 +1,22 @@
+---
+version: '3.6'
+services:
+  main:
+    # image: jgoerzen/debian-base-minimal
+    domainname: localdomain
+    hostname: localhost
+    build: .
+
+    stop_signal: SIGRTMIN+3 # Halts the machine, starts the halt.target unit.
+    # stop_grace_period: 10s # default 10s
+
+    volumes:
+      - type: tmpfs
+        target: /run
+        tmpfs:
+          size: 100M
+      - type: tmpfs
+        target: /run/lock
+        tmpfs:
+          size: 100M
+      - /sys/fs/cgroup:/sys/fs/cgroup:ro
